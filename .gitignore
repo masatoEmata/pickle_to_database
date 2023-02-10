@@ -1,0 +1,4 @@
+data_uploader.py
+*.db
+service_account_key.json
+/env
