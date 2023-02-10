@@ -1,5 +1,5 @@
 import sqlite3
-from typing import List
+from typing import List, Any
 from .serializer import serialize, deserialize
 
 
@@ -16,7 +16,7 @@ class SerializedSqlite:
         except sqlite3.OperationalError:
             pass
 
-    def insert(self, obj_names: List, obj_values: List):
+    def insert(self, obj_names: List[str], obj_values: List[Any]):
         insert_sql = f"INSERT OR REPLACE into {self.table_name} (charname, pathobj) values (?,?)"
         serialized_values = [serialize(x) for x in obj_values]
         insert_objs = list(zip(obj_names, serialized_values))

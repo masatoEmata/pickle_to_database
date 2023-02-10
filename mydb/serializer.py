@@ -13,5 +13,3 @@ def serialize(obj):
 
 def deserialize(binary):
     return pickle.loads(debinarize(binary))
-
-print(binarize([1,2,3,{'a': [1.2, 2.2]}]))
