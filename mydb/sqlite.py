@@ -1,14 +1,6 @@
 import sqlite3
 from typing import List
-import pickle
-import bz2
-
-
-def serialize(obj):
-    return bz2.compress(pickle.dumps(obj, pickle.HIGHEST_PROTOCOL), 3)
-
-def deserialize(binary):
-    return pickle.loads(bz2.decompress(binary))
+from .serializer import serialize, deserialize
 
 
 class SerializedSqlite:
@@ -40,3 +32,6 @@ class SerializedSqlite:
 
     def close(self):
         self.conn.close()
+
+
+# haya-programming.com/entry/2017/02/25/184006
